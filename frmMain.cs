@@ -206,14 +206,14 @@ namespace NugetPackageManager
                 .Replace("{Key}", key)
                 .Replace("{Source}", source);
 
-            string command = $"dotnet nuget {commandType.ToString().ToLower()} {args}";
-
-            this.txtMessage.Clear();
+            string command = $"dotnet nuget {commandType.ToString().ToLower()} {args}";          
 
             Action<bool> exec = (waitForInput) =>
-              {
-                  ProcessHelper.ExecuteCommand(file.FullName, command, this.Process_OutputDataReceived, this.Process_ErrorDataReceived, waitForInput);
-              };
+            {
+                this.txtMessage.Clear();
+
+                ProcessHelper.ExecuteCommand(file.FullName, command, this.Process_OutputDataReceived, this.Process_ErrorDataReceived, waitForInput);
+            };
 
             if (commandType == CommandType.Delete)
             {
