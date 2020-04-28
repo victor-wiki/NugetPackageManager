@@ -112,6 +112,8 @@ namespace NugetPackageManager
             {
                 this.cboKey.SelectedIndex = -1;
             }
+
+            this.txtMessage.Clear();
         }
 
         private string FindKey(string packageName)
